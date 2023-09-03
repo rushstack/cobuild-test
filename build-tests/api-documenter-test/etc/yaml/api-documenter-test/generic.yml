@@ -1,0 +1,11 @@
+### YamlMime:TSType
+name: Generic
+uid: 'api-documenter-test!Generic:class'
+package: api-documenter-test!
+fullName: Generic
+summary: Generic class.
+remarks: ''
+example: []
+isPreview: false
+isDeprecated: false
+type: class

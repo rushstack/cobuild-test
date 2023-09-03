@@ -1,0 +1,10 @@
+{
+  "string1": {
+    "value": "\"String with quotemarks\"",
+    "comment": "string with quotemarks"
+  },
+  "__IGNORED_STRING__": {
+    "value": "ignored string",
+    "comment": "ignored string"
+  }
+}

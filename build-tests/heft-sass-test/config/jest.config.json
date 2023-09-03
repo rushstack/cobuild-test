@@ -1,0 +1,5 @@
+{
+  "extends": "@rushstack/heft-jest-plugin/includes/jest-web.config.json",
+
+  "moduleFileExtensions": ["js", "css", "json", "node"]
+}

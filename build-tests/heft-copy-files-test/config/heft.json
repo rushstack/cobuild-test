@@ -1,0 +1,71 @@
+/**
+ * Defines configuration used by core Heft.
+ */
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
+
+  // TODO: Add comments
+  "phasesByName": {
+    "build": {
+      "cleanFiles": [
+        {
+          "includeGlobs": [
+            "out-all",
+            "out-all-linked",
+            "out-all-flattened",
+            "out-all-except-for-images",
+            "out-images1",
+            "out-images2",
+            "out-images3",
+            "out-images4",
+            "out-images5"
+          ]
+        }
+      ],
+
+      "tasksByName": {
+        "perform-copy": {
+          "taskPlugin": {
+            "pluginPackage": "@rushstack/heft",
+            "pluginName": "copy-files-plugin",
+            "options": {
+              "copyOperations": [
+                {
+                  "sourcePath": "src",
+                  "destinationFolders": ["out-all"]
+                },
+                {
+                  "sourcePath": "src",
+                  "destinationFolders": ["out-all-linked"],
+                  "hardlink": true
+                },
+                {
+                  "sourcePath": "src",
+                  "destinationFolders": ["out-images-flattened"],
+                  "fileExtensions": [".jpg", ".png"],
+                  "flatten": true
+                },
+                {
+                  "sourcePath": "src",
+                  "destinationFolders": ["out-all-except-for-images"],
+                  "excludeGlobs": ["**/*.png", "**/*.jpg"]
+                },
+                {
+                  "sourcePath": "src",
+                  "destinationFolders": [
+                    "out-images1",
+                    "out-images2",
+                    "out-images3",
+                    "out-images4",
+                    "out-images5"
+                  ],
+                  "fileExtensions": [".jpg", ".png"]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

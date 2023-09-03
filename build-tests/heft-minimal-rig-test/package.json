@@ -1,0 +1,19 @@
+{
+  "name": "heft-minimal-rig-test",
+  "description": "This is a minimal rig package that is imported by the 'heft-minimal-rig-usage-test' project",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "",
+    "_phase:build": ""
+  },
+  "dependencies": {
+    "typescript": "~5.0.4",
+    "@microsoft/api-extractor": "workspace:*",
+    "@rushstack/heft-api-extractor-plugin": "workspace:*",
+    "@rushstack/heft-jest-plugin": "workspace:*",
+    "@rushstack/heft-lint-plugin": "workspace:*",
+    "@rushstack/heft-typescript-plugin": "workspace:*"
+  }
+}
