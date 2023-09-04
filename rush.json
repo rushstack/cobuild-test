@@ -523,12 +523,14 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    /*
     {
       "packageName": "api-extractor-test-04",
       "projectFolder": "build-tests/api-extractor-test-04",
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    */
     {
       "packageName": "eslint-7-test",
       "projectFolder": "build-tests/eslint-7-test",
@@ -585,6 +587,7 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    /*
     {
       "packageName": "heft-storybook-react-tutorial",
       "projectFolder": "build-tests-samples/heft-storybook-react-tutorial",
@@ -597,6 +600,7 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    */
     {
       "packageName": "heft-webpack-basic-tutorial",
       "projectFolder": "build-tests-samples/heft-webpack-basic-tutorial",
@@ -791,12 +795,14 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    /*
     {
       "packageName": "install-test-workspace",
       "projectFolder": "build-tests/install-test-workspace",
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    */
     {
       "packageName": "localization-plugin-test-01",
       "projectFolder": "build-tests/localization-plugin-test-01",
