@@ -34,8 +34,8 @@ jobs:
         with:
           path: ~/.rush-pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1002
+          # If we can't find a match, restore the latest cache entry
           restore-keys: |
-            # If we can't find a match, restore the latest cache entry
             ${{ runner.os }}-pnpm-
 
       - name: Set RUSH_PNPM_STORE_PATH
