@@ -11,6 +11,9 @@ jobs:
   build:
     name: primary
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runner_id: [primary, cobuild2, cobuild3]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -36,3 +39,6 @@ jobs:
           BROWSERSLIST_IGNORE_OLD_DATA: 1
           RUSH_BUILD_CACHE_WRITE_ALLOWED: 1
           RUSH_BUILD_CACHE_CREDENTIAL: ${{ secrets.RUSH_BUILD_CACHE_CREDENTIAL }}
+          RUSH_COBUILD_CONTEXT_ID: ${{ github.run_id }}_${{ github.run_number }}_${{ github.run_attempt }}
+          RUSH_COBUILD_RUNNER_ID: ${{ matrix.runner_id }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
