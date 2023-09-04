@@ -1,0 +1,44 @@
+name: ci-cobuild.yml
+on:
+  #push:
+  #  branches: ['main']
+  #pull_request:
+  #  branches: ['main']
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  build:
+    name: cobuild
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runner_id: [runner1, runner2, runner3]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Git config user
+        run: |
+          git config --local user.name "Rushbot"
+          git config --local user.email "rushbot@users.noreply.github.com"
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
+
+      - name: Rush build (install-run-rush)
+        run: node common/scripts/install-run-rush.js build --verbose --production
+        env:
+          # Prevent time-based browserslist update warning
+          # See https://github.com/microsoft/rushstack/issues/2981
+          BROWSERSLIST_IGNORE_OLD_DATA: 1
+          RUSH_BUILD_CACHE_WRITE_ALLOWED: 1
+          RUSH_BUILD_CACHE_CREDENTIAL: ${{ secrets.RUSH_BUILD_CACHE_CREDENTIAL }}
+          RUSH_COBUILD_CONTEXT_ID: ${{ github.run_id }}_${{ github.run_number }}_${{ github.run_attempt }}
+          RUSH_COBUILD_RUNNER_ID: ${{ matrix.runner_id }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
