@@ -1,0 +1,12 @@
+{
+  /**
+   * The URL of your Redis server
+   */
+  "url": "redis://<remote_ip>:6379",
+
+  /**
+   * An environment variable that your CI pipeline will assign,
+   * which the plugin uses to authenticate with Redis.
+   */
+  "passwordEnvironmentVariable": "REDIS_PASS"
+}

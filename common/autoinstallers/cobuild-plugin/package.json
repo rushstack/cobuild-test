@@ -1,0 +1,8 @@
+{
+  "name": "cobuild-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@rushstack/rush-redis-cobuild-plugin": "5.104.0"
+  }
+}
