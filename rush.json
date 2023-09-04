@@ -1123,11 +1123,13 @@
     },
 
     // "vscode-extensions" folder (alphabetical order)
+    /*
     {
       "packageName": "rushstack",
       "projectFolder": "vscode-extensions/rush-vscode-extension",
       "reviewCategory": "vscode-extensions"
     },
+    */
     {
       "packageName": "@rushstack/rush-vscode-command-webview",
       "projectFolder": "vscode-extensions/rush-vscode-command-webview",
@@ -1215,4 +1217,3 @@
     }
   ]
 }
-// test
