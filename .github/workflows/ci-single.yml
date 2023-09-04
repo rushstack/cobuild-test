@@ -25,8 +25,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: Read PNPM store from GHA cache
-        id: pnpm-store-cache-read
+      - name: Use GHA cache for PNPM store
         uses: actions/cache@v3
         with:
           path: ~/.rush-pnpm-store
@@ -34,23 +33,12 @@ jobs:
           # If we can't find a match, restore the latest cache entry
           restore-keys: |
             ${{ runner.os }}-pnpm-
-          # This step won't cause a write to the cache
-          lookup-only: true
 
       - name: Set RUSH_PNPM_STORE_PATH
         run: echo "RUSH_PNPM_STORE_PATH=~/.rush-pnpm-store" >> $GITHUB_ENV
 
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
-
-      - name: Write PNPM store to GHA cache
-        id: pnpm-store-cache-write
-        # (Only write if there was a cache miss AND "rush install" succeeded)
-        if: steps.pnpm-store-cache-read.outputs.cache-hit != 'true'
-        uses: actions/cache@v3
-        with:
-          path: ~/.rush-pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1001
 
       - name: Rush build (install-run-rush)
         run: node common/scripts/install-run-rush.js build --verbose --production --timeline
