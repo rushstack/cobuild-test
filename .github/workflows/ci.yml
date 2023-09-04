@@ -9,11 +9,11 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: primary
+    name: cobuild
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        runner_id: [primary, cobuild2, cobuild3]
+        runner_id: [runner1, runner2, runner3]
     steps:
       - uses: actions/checkout@v3
         with:
