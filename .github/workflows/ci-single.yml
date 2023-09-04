@@ -30,10 +30,10 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ~/.rush-pnpm-store
-          key: v1003-${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+          key: v1003-pnpm-${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
           # If we can't find a match, restore the latest cache entry
           restore-keys: |
-            v1003-${{ runner.os }}-pnpm-
+            v1003-pnpm-${{ runner.os }}-
 
       - name: Set RUSH_PNPM_STORE_PATH
         run: echo "RUSH_PNPM_STORE_PATH=~/.rush-pnpm-store" >> $GITHUB_ENV
@@ -46,7 +46,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: ~/.rush-pnpm-store
-          key: v1003-${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+          key: v1003-pnpm-${{ runner.os }}-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
 
       - name: Rush build (install-run-rush)
         run: node common/scripts/install-run-rush.js build --verbose --production --timeline
