@@ -26,10 +26,11 @@ jobs:
           node-version: 16
 
       - name: Read PNPM store from GHA cache
+        id: pnpm-store-cache-read
         uses: actions/cache@v3
         with:
           path: ~/.rush-pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1000
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1001
           # If we can't find a match, restore the latest cache entry
           restore-keys: |
             ${{ runner.os }}-pnpm-
@@ -43,11 +44,13 @@ jobs:
         run: node common/scripts/install-run-rush.js install
 
       - name: Write PNPM store to GHA cache
-        # (Only write if "rush install" succeeded)
+        id: pnpm-store-cache-write
+        # (Only write if there was a cache miss AND "rush install" succeeded)
+        if: steps.pnpm-store-cache-read.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: ~/.rush-pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1000
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1001
 
       - name: Rush build (install-run-rush)
         run: node common/scripts/install-run-rush.js build --verbose --production --timeline
