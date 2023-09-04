@@ -25,6 +25,18 @@ jobs:
         with:
           node-version: 16
 
+      - name: Cache PNPM store for Rush
+        uses: actions/cache@v2
+        with:
+          path: ~/.rush-pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+          # If we can't find a match, restore the latest cache entry
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Set RUSH_PNPM_STORE_PATH to GitHub cache location
+        run: echo "RUSH_PNPM_STORE_PATH=~/.rush-pnpm-store" >> $GITHUB_ENV
+
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
 
