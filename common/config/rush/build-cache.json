@@ -17,7 +17,7 @@
    *
    * Possible values: "local-only", "azure-blob-storage", "amazon-s3"
    */
-  "cacheProvider": "local-only",
+  "cacheProvider": "http",
 
   /**
    * Setting this property overrides the cache entry ID.  If this property is set, it must contain
@@ -30,7 +30,8 @@
    *  - [phaseName:normalize]
    *  - [phaseName:trimPrefix]
    */
-  "cacheEntryNamePattern": "[projectName:normalize]-[phaseName:normalize]-[hash]",
+  // "cacheEntryNamePattern": "[projectName:normalize]-[phaseName:normalize]-[hash]",
+  "cacheEntryNamePattern": "[hash]",
 
   /**
    * Use this configuration with "cacheProvider"="azure-blob-storage"
@@ -88,5 +89,14 @@
      * If set to true, allow writing to the cache. Defaults to false.
      */
     // "isCacheWriteAllowed": true
+  },
+
+  "httpConfiguration": {
+    "url": "http://www.octogonz.com:5071/cache/",
+    "tokenHandler": {
+      "exec": "node",
+      "args": ["common/scripts/rush-http-build-cache-plugin-auth.js"]
+    },
+    "isCacheWriteAllowed": false
   }
 }
