@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: cobuild
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
