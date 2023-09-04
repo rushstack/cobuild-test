@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ~/.rush-pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1002
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1003
           # If we can't find a match, restore the latest cache entry
           restore-keys: |
             ${{ runner.os }}-pnpm-
@@ -46,7 +46,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: ~/.rush-pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1002
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}-v1003
 
       - name: Rush build (install-run-rush)
         run: node common/scripts/install-run-rush.js build --verbose --production --timeline
