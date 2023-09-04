@@ -783,6 +783,7 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
+    /*
     {
       "packageName": "hashed-folder-copy-plugin-webpack4-test",
       "projectFolder": "build-tests/hashed-folder-copy-plugin-webpack4-test",
@@ -795,7 +796,6 @@
       "reviewCategory": "tests",
       "shouldPublish": false
     },
-    /*
     {
       "packageName": "install-test-workspace",
       "projectFolder": "build-tests/install-test-workspace",
