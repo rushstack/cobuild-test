@@ -29,7 +29,7 @@ jobs:
         run: node common/scripts/install-run-rush.js install
 
       - name: Rush build (install-run-rush)
-        run: node common/scripts/install-run-rush.js build --verbose --production
+        run: node common/scripts/install-run-rush.js build --verbose --production --timeline
         env:
           # Prevent time-based browserslist update warning
           # See https://github.com/microsoft/rushstack/issues/2981
